@@ -1,5 +1,7 @@
 package com.luizalabs.wishlist.core.usecase.create;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public record CreateWishlistInput(
-        String customerId
+        @NotEmpty String customerId
 ) {}

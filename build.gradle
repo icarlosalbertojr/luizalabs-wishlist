@@ -13,6 +13,14 @@ java {
 	}
 }
 
+bootJar {
+    mainClass = 'com.luizalabs.wishlist.WishlistApplication'
+}
+
+jar {
+	enabled = false
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor

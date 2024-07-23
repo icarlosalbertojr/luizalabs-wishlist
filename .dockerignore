@@ -1,0 +1,8 @@
+.gradle
+.vscode
+.idea
+.gitignore
+gradle/
+gradlew
+gradlew.bat
+HElP.md

@@ -22,10 +22,12 @@ public class CreateWishlistUseCase implements UseCase<CreateWishlistInput, Wishl
     }
 
     public Wishlist execute(CreateWishlistInput input) {
-        log.info("[CreateWishlistUseCase] creating wishlist to customer {}", input.customerId());
+        log.info("[CreateWishlistUseCase] creating wishlist for customer {}", input.customerId());
         final var newWishlist = new Wishlist(input.customerId(), maxLimit);
+
         var saved = wishlistRepository.save(newWishlist);
-        log.info("[CreateWishlistUseCase] wishlist was created to customer {}", input.customerId());
+        log.info("[CreateWishlistUseCase] wishlist was created for customer {}", input.customerId());
+
         return saved;
     }
 

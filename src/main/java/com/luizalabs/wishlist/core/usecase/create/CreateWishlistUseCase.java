@@ -3,23 +3,15 @@ package com.luizalabs.wishlist.core.usecase.create;
 import com.luizalabs.wishlist.core.domain.Wishlist;
 import com.luizalabs.wishlist.core.repository.WishlistRepository;
 import com.luizalabs.wishlist.core.usecase.UseCase;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
 @Slf4j
+@RequiredArgsConstructor
 public class CreateWishlistUseCase implements UseCase<CreateWishlistInput, Wishlist> {
 
     private final Integer maxLimit;
     private final WishlistRepository wishlistRepository;
-
-    @Autowired
-    public CreateWishlistUseCase(
-            @Value("${service.params.wishlist.maxLimit}") Integer maxLimit,
-            WishlistRepository wishlistRepository) {
-        this.maxLimit = maxLimit;
-        this.wishlistRepository = wishlistRepository;
-    }
 
     public Wishlist execute(CreateWishlistInput input) {
         log.info("[CreateWishlistUseCase] creating wishlist for customer {}", input.customerId());

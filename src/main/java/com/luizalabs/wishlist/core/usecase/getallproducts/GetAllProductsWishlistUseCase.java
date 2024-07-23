@@ -1,24 +1,24 @@
-package com.luizalabs.wishlist.core.usecase.getproduct;
+package com.luizalabs.wishlist.core.usecase.getallproducts;
+
 
 import com.luizalabs.wishlist.core.repository.WishlistRepository;
 import com.luizalabs.wishlist.core.usecase.UseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Optional;
+import java.util.Set;
 
 @Slf4j
 @RequiredArgsConstructor
-public class GetProductUseCase implements UseCase<GetProductInput, Optional<String>> {
+public class GetAllProductsWishlistUseCase implements UseCase<GetAllProductsWishlistInput, Set<String>> {
 
     private final WishlistRepository wishlistRepository;
 
     @Override
-    public Optional<String> execute(GetProductInput input) {
+    public Set<String> execute(GetAllProductsWishlistInput input) {
         final var wishlist = wishlistRepository.findByIdAndCustomerId(input.wishlistId(), input.customerId())
                 .orElseThrow(() -> new RuntimeException("Wishlist not found"));
-        log.info("[GetAllProductsUseCase] getting wishlist {} product {}", input.wishlistId(), input.productId());
-        final var product = wishlist.getProduct(input.productId());
-        return product;
+        log.info("[GetAllProductsUseCase] getting wishlist {} products", input.wishlistId());
+        return wishlist.getProducts();
     }
 }

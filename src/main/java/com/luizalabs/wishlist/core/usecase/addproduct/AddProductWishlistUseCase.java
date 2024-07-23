@@ -8,11 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-public class AddProductWishlistUseCase implements UseCase<AddProductInput, Wishlist> {
+public class AddProductWishlistUseCase implements UseCase<AddProductWishlistInput, Wishlist> {
 
     private final WishlistRepository wishlistRepository;
 
-    public Wishlist execute(AddProductInput input) {
+    public Wishlist execute(AddProductWishlistInput input) {
         final var wishlist = wishlistRepository.findByIdAndCustomerId(input.wishlistId(), input.customerId())
                 .orElseThrow(() -> new RuntimeException("Wishlist not found"));
 

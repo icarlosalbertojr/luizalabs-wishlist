@@ -1,6 +1,6 @@
 package com.luizalabs.wishlist.core.usecase.getproduct;
 
-public record GetProductInput(
+public record GetProductWishlistInput(
         String customerId,
         String wishlistId,
         String productId

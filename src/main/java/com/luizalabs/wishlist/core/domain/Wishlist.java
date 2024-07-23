@@ -28,7 +28,7 @@ public class Wishlist {
 
     public void addProduct(@NotNull String productId) {
         if (products.size() == productAmountLimit) {
-            throw new IllegalArgumentException("Wishlist already has " + productAmountLimit + " items");
+            throw new IllegalArgumentException("Wishlist reach out it limit");
         }
         products.add(productId);
         updated();
@@ -42,7 +42,7 @@ public class Wishlist {
         return productWasRemoved;
     }
 
-    public Optional<String> getProduct(String productId) {
+    public Optional<String> getProduct(@NotNull String productId) {
         return products.stream()
                 .filter(it -> it.equals(productId))
                 .findFirst();

@@ -11,7 +11,7 @@ services:
     image: mongo
     container_name: mongodb-wishlist
     ports:
-      - 27017:17017
+      - 27017:27017
     volumes:
       - mongodb-data:/data/db
     environment:

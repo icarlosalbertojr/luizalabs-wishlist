@@ -15,34 +15,34 @@ public class Wishlist {
     private String id;
     private String customerId;
     private Set<String> products;
-    private Integer productAmountLimit;
+    private Integer maxLimit;
     private LocalDateTime updatedAt;
     private LocalDateTime createdAt;
 
-    public Wishlist(String customerId, Integer productAmountLimit) {
+    public Wishlist(final String customerId, final Integer productAmountLimit) {
         this.customerId = customerId;
-        this.productAmountLimit = productAmountLimit;
+        this.maxLimit = productAmountLimit;
         this.products = new HashSet<>();
         this.createdAt = LocalDateTime.now();
     }
 
-    public void addProduct(@NotNull String productId) {
-        if (products.size() == productAmountLimit) {
+    public void addProduct(final String productId) {
+        if (products.size() == maxLimit) {
             throw new IllegalArgumentException("Wishlist reach out it limit");
         }
         products.add(productId);
         updated();
     }
 
-    public boolean removeProduct(@NotNull String productId) {
-        var productWasRemoved = products.remove(productId);
+    public boolean removeProduct(final String productId) {
+        final var productWasRemoved = products.remove(productId);
         if (productWasRemoved) {
             updated();
         }
         return productWasRemoved;
     }
 
-    public Optional<String> getProduct(@NotNull String productId) {
+    public Optional<String> getProduct(final String productId) {
         return products.stream()
                 .filter(it -> it.equals(productId))
                 .findFirst();

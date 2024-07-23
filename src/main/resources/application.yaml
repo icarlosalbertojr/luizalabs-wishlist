@@ -11,3 +11,8 @@ spring:
   data:
     mongodb:
       uri: ${LUIZALABS_WISHLIST_MONGODB_URL}
+service:
+  params:
+    wishlist:
+      maxLimit: ${LUIZALABS_WISHLIST_MAX_LIMIT:20}
+

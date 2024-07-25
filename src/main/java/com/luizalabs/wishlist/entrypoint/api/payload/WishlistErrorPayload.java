@@ -5,5 +5,5 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema
 public record WishlistErrorPayload(
         String status,
-        String message
+        Object detail
 ) {}

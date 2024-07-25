@@ -6,11 +6,10 @@ spring:
     active: ${LUIZALABS_WISHLIST_ENVIRONMENT:local}
   application:
     name: wishlist
-  jackson:
-    property-naming-strategy: SNAKE_CASE
   data:
     mongodb:
       uri: ${LUIZALABS_WISHLIST_MONGODB_URL}
+      auto-index-creation: true
 service:
   params:
     wishlist:

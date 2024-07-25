@@ -4,11 +4,10 @@ server.port: 8080
 spring:
   application:
     name: wishlist
-  jackson:
-    property-naming-strategy: SNAKE_CASE
   data:
     mongodb:
       uri: mongodb://localhost:27017/wishlist
+      auto-index-creation: true
 
 # Custom service configuration
 service:

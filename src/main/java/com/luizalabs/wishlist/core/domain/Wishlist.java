@@ -1,27 +1,27 @@
 package com.luizalabs.wishlist.core.domain;
 
-import java.util.*;
-
-import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 import java.time.LocalDateTime;
-
-import lombok.AccessLevel;
-import lombok.Getter;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 @Getter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Wishlist {
 
     private String id;
-    private String customerId;
+    private final String customerId;
     private Set<String> products;
-    private Integer maxLimit;
+    private final Integer maxLimit;
     private LocalDateTime updatedAt;
     private LocalDateTime createdAt;
 
-    public Wishlist(final String customerId, final Integer productAmountLimit) {
+    public Wishlist(final String customerId, final Integer maxLimit) {
         this.customerId = customerId;
-        this.maxLimit = productAmountLimit;
+        this.maxLimit = maxLimit;
         this.products = new HashSet<>();
         this.createdAt = LocalDateTime.now();
     }

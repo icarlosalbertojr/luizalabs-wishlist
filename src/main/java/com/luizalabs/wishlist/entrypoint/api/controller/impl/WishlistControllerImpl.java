@@ -9,6 +9,8 @@ import com.luizalabs.wishlist.core.usecase.getallproducts.GetAllProductsWishlist
 import com.luizalabs.wishlist.core.usecase.getallproducts.GetAllProductsWishlistUseCase;
 import com.luizalabs.wishlist.core.usecase.getproduct.GetProductWishlistInput;
 import com.luizalabs.wishlist.core.usecase.getproduct.GetProductWishlistUseCase;
+import com.luizalabs.wishlist.core.usecase.removeproduct.RemoveWishlistProductInput;
+import com.luizalabs.wishlist.core.usecase.removeproduct.RemoveWishlistProductUseCase;
 import com.luizalabs.wishlist.entrypoint.api.controller.WishlistController;
 import com.luizalabs.wishlist.entrypoint.api.payload.AddWishlistProductPayload;
 import com.luizalabs.wishlist.entrypoint.api.payload.CreateWishlistPayload;
@@ -29,6 +31,7 @@ public class WishlistControllerImpl implements WishlistController {
     private final GetAllProductsWishlistUseCase getAllProductsWishlistUseCase;
     private final GetProductWishlistUseCase getProductWishlistUseCase;
     private final AddProductWishlistUseCase addProductWishlistUseCase;
+    private final RemoveWishlistProductUseCase removeWishlistProductUseCase;
 
     @Override
     public CreateWishlistPayload.Response create(CreateWishlistPayload.Request request) {
@@ -43,7 +46,7 @@ public class WishlistControllerImpl implements WishlistController {
 
     @Override
     public void removeProduct(String customerId, String wishlistId, String productId) {
-
+        removeWishlistProductUseCase.execute(new RemoveWishlistProductInput(customerId, wishlistId, productId));
     }
 
     @Override

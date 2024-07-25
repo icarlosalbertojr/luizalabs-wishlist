@@ -9,6 +9,8 @@ import com.luizalabs.wishlist.core.usecase.getallproducts.GetAllProductsWishlist
 import com.luizalabs.wishlist.core.usecase.getallproducts.GetAllProductsWishlistUseCaseImpl;
 import com.luizalabs.wishlist.core.usecase.getproduct.GetProductWishlistUseCase;
 import com.luizalabs.wishlist.core.usecase.getproduct.GetProductWishlistUseCaseImpl;
+import com.luizalabs.wishlist.core.usecase.removeproduct.RemoveWishlistProductUseCase;
+import com.luizalabs.wishlist.core.usecase.removeproduct.RemoveWishlistProductUseCaseImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,11 +26,14 @@ public class CoreBeansConfig {
         this.maxLimit = maxLimit;
     }
 
-
-
     @Bean
     public AddProductWishlistUseCase addProductWishlistUseCase(final WishlistRepository repository) {
         return new AddProductWishlistUseCaseImpl(repository);
+    }
+
+    @Bean
+    public RemoveWishlistProductUseCase removeWishlistProductUseCase(final WishlistRepository repository) {
+        return new RemoveWishlistProductUseCaseImpl(repository);
     }
 
     @Bean

@@ -1,9 +1,7 @@
 package com.luizalabs.wishlist.entrypoint.api.controller;
 
-import com.luizalabs.wishlist.entrypoint.api.payload.AddWishlistProductPayload;
-import com.luizalabs.wishlist.entrypoint.api.payload.CreateWishlistPayload;
-import com.luizalabs.wishlist.entrypoint.api.payload.WishlistErrorPayload;
-import com.luizalabs.wishlist.entrypoint.api.payload.WishlistOneProductPayload;
+import com.luizalabs.wishlist.core.domain.Wishlist;
+import com.luizalabs.wishlist.entrypoint.api.payload.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -31,7 +29,6 @@ public interface WishlistController {
     @PostMapping
     CreateWishlistPayload.Response create(@RequestBody @Valid CreateWishlistPayload.Request request);
 
-
     @Operation(summary = "Add product on wishlist")
     @ApiResponse(responseCode = "204", description = "Product added")
     @ApiResponse(responseCode = "404", description = "Resource not found", content = {
@@ -41,7 +38,7 @@ public interface WishlistController {
             @Content(mediaType = "application/json", schema = @Schema(implementation = WishlistErrorPayload.class))
     })
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/{wishlistId}/customer/{customerId}/product")
+    @PatchMapping("/{wishlistId}/customer/{customerId}/product")
     void addProduct(
             @PathVariable String customerId,
             @PathVariable String wishlistId,
@@ -57,7 +54,7 @@ public interface WishlistController {
             @Content(mediaType = "application/json", schema = @Schema(implementation = WishlistErrorPayload.class))
     })
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{wishlistId}/customer/{customerId}/product/{productId}")
+    @PatchMapping("/{wishlistId}/customer/{customerId}/product/{productId}")
     void removeProduct(
             @PathVariable String customerId,
             @PathVariable String wishlistId,

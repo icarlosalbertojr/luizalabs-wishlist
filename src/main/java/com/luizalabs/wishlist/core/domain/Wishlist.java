@@ -24,6 +24,7 @@ public class Wishlist {
         this.maxLimit = maxLimit;
         this.products = new HashSet<>();
         this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     public void addProduct(final String productId) {

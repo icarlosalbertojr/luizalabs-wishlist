@@ -38,7 +38,7 @@ public interface WishlistController {
             @Content(mediaType = "application/json", schema = @Schema(implementation = WishlistErrorPayload.class))
     })
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PatchMapping("/{wishlistId}/customer/{customerId}/product")
+    @PostMapping("/{wishlistId}/customer/{customerId}/product")
     void addProduct(
             @PathVariable String customerId,
             @PathVariable String wishlistId,
@@ -54,7 +54,7 @@ public interface WishlistController {
             @Content(mediaType = "application/json", schema = @Schema(implementation = WishlistErrorPayload.class))
     })
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PatchMapping("/{wishlistId}/customer/{customerId}/product/{productId}")
+    @DeleteMapping("/{wishlistId}/customer/{customerId}/product/{productId}")
     void removeProduct(
             @PathVariable String customerId,
             @PathVariable String wishlistId,

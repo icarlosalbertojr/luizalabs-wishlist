@@ -1,5 +1,6 @@
 package com.luizalabs.wishlist.core.domain;
 
+import com.luizalabs.wishlist.core.exception.WishlistReachOutLimit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +36,7 @@ public class WishlistTest {
             wishlist.addProduct("product" + i);
         }
 
-        assertThrows(IllegalArgumentException.class, () -> wishlist.addProduct(productId));
+        assertThrows(WishlistReachOutLimit.class, () -> wishlist.addProduct(productId));
     }
 
     @Test

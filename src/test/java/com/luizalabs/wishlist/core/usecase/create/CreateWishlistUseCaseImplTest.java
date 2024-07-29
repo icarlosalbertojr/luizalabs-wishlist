@@ -3,19 +3,15 @@ package com.luizalabs.wishlist.core.usecase.create;
 import com.luizalabs.wishlist.core.domain.Wishlist;
 import com.luizalabs.wishlist.core.exception.WishlistAlreadyCreatedException;
 import com.luizalabs.wishlist.core.repository.WishlistRepository;
-import org.instancio.Instancio;
-import org.instancio.Select;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.instancio.Instancio.create;
 import static org.instancio.Instancio.of;
@@ -48,7 +44,7 @@ public class CreateWishlistUseCaseImplTest {
                 .set(field(Wishlist::getMaxLimit), maxLimit)
                 .create();
 
-        when(wishlistRepository.findByCustomerId(input.customerId())).thenReturn(List.of());
+        when(wishlistRepository.findByCustomerId(input.customerId())).thenReturn(Optional.empty());
         when(wishlistRepository.save(any(Wishlist.class))).thenReturn(wishlist);
 
         var result = createWishlistUseCase.execute(input);
@@ -70,7 +66,7 @@ public class CreateWishlistUseCaseImplTest {
                 .set(field(Wishlist::getMaxLimit), maxLimit)
                 .create();
 
-        when(wishlistRepository.findByCustomerId(input.customerId())).thenReturn(List.of(wishlist));
+        when(wishlistRepository.findByCustomerId(input.customerId())).thenReturn(Optional.of(wishlist));
 
         assertThrows(WishlistAlreadyCreatedException.class, () -> createWishlistUseCase.execute(input));
 
@@ -82,7 +78,7 @@ public class CreateWishlistUseCaseImplTest {
     public void shouldNotCreateWishlistWhenThrowsException() {
         final var input = create(CreateWishlistInput.class);
 
-        when(wishlistRepository.findByCustomerId(input.customerId())).thenReturn(List.of());
+        when(wishlistRepository.findByCustomerId(input.customerId())).thenReturn(Optional.empty());
         doThrow(RuntimeException.class).when(wishlistRepository).save(any(Wishlist.class));
 
         assertThrows(RuntimeException.class, () -> createWishlistUseCase.execute(input));

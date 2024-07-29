@@ -10,6 +10,6 @@ public interface MongoWishlistRepository extends MongoRepository<WishlistEntity,
 
     Optional<WishlistEntity> findByIdAndCustomerId(String id, String customerId);
 
-    List<WishlistEntity> findByCustomerId(String customerId);
+    Optional<WishlistEntity> findByCustomerId(String customerId);
 
 }

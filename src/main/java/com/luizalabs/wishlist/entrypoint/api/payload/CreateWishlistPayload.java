@@ -8,8 +8,9 @@ import java.time.LocalDateTime;
 public class CreateWishlistPayload {
 
     public record Request(
-            @NotEmpty String consumerId
-    ){}
+            @NotEmpty
+            String customerId
+    ) {}
 
     public record Response(
             String id,

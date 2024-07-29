@@ -5,7 +5,6 @@ import com.luizalabs.wishlist.core.repository.WishlistRepository;
 import com.luizalabs.wishlist.dataprovider.database.mapper.WishlistDatabaseMapper;
 import lombok.RequiredArgsConstructor;
 
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -26,10 +25,8 @@ public class WishlistRepositoryImpl implements WishlistRepository {
     }
 
     @Override
-    public List<Wishlist> findByCustomerId(String customerId) {
+    public Optional<Wishlist> findByCustomerId(String customerId) {
         return mongoWishlistRepository.findByCustomerId(customerId)
-                .stream()
-                .map(WishlistDatabaseMapper::convert)
-                .toList();
+                .map(WishlistDatabaseMapper::convert);
     }
 }

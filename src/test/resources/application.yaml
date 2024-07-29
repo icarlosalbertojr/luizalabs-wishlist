@@ -4,8 +4,6 @@ server.port: 8080
 spring:
   application:
     name: wishlist
-  jackson:
-    property-naming-strategy: SNAKE_CASE
   data:
     mongodb:
       uri: mongodb://localhost:27017/wishlist
@@ -15,3 +13,5 @@ service:
   params:
     wishlist:
       maxLimit: 20
+
+de.flapdoodle.mongodb.embedded.version: 6.0.5

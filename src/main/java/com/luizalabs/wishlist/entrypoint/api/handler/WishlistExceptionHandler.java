@@ -1,6 +1,7 @@
 package com.luizalabs.wishlist.entrypoint.api.handler;
 
 import com.luizalabs.wishlist.core.exception.WishlistAlreadyCreatedException;
+import com.luizalabs.wishlist.core.exception.WishlistReachOutLimit;
 import com.luizalabs.wishlist.core.exception.WishlistResourceNotFoundException;
 import com.luizalabs.wishlist.entrypoint.api.payload.WishlistErrorPayload;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,13 @@ public class WishlistExceptionHandler {
                 HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(WishlistReachOutLimit.class)
+    public ResponseEntity<WishlistErrorPayload> handle(WishlistReachOutLimit e) {
+        return new ResponseEntity<>(new WishlistErrorPayload(HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                e.getMessage()),
+                HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(WishlistResourceNotFoundException.class)
     public ResponseEntity<WishlistErrorPayload> handle(WishlistResourceNotFoundException e) {
         return new ResponseEntity<>(new WishlistErrorPayload(HttpStatus.NOT_FOUND.getReasonPhrase(),
@@ -37,13 +45,6 @@ public class WishlistExceptionHandler {
         return new ResponseEntity<>(new WishlistErrorPayload(HttpStatus.CONFLICT.getReasonPhrase(),
                 e.getMessage()),
                 HttpStatus.CONFLICT);
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<WishlistErrorPayload> handle(Exception e) {
-        return new ResponseEntity<>(new WishlistErrorPayload(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                e.getMessage()),
-                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }

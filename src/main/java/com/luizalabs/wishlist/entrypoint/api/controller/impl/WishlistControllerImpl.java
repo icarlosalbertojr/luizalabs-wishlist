@@ -35,7 +35,7 @@ public class WishlistControllerImpl implements WishlistController {
 
     @Override
     public CreateWishlistPayload.Response create(CreateWishlistPayload.Request request) {
-        final var created = createWishlistUseCase.execute(new CreateWishlistInput(request.consumerId()));
+        final var created = createWishlistUseCase.execute(new CreateWishlistInput(request.customerId()));
         return new CreateWishlistPayload.Response(created.getId(), created.getCustomerId(), created.getMaxLimit(), created.getCreatedAt());
     }
 

@@ -1,5 +1,6 @@
 package com.luizalabs.wishlist.core.domain;
 
+import com.luizalabs.wishlist.core.exception.WishlistReachOutLimit;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -29,7 +30,7 @@ public class Wishlist {
 
     public void addProduct(final String productId) {
         if (products.size() == maxLimit) {
-            throw new IllegalArgumentException("Wishlist reach out it limit");
+            throw new WishlistReachOutLimit();
         }
         products.add(productId);
         updated();

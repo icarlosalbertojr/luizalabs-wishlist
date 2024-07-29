@@ -40,13 +40,13 @@ todos os produtos que ele selecionou em uma única tela.
 ### Environment variables:
 ```dockerfile
     # Define o ambiente em que o projeto está sendo executado
-    LUIZALABS_WISHLIST_ENVIRONMENT = prod | local
+    WISHLIST_ENVIRONMENT = prod | local
     
     #Define a URL de conxexão com o MongoDB
-    LUIZALABS_WISHLIST_MONGODB_URL = mongodb://mongodb:27017/wishlist
+    WISHLIST_MONGODB_URL = mongodb://mongodb:27017/wishlist
     
     # Define o tamanho máximo de produtos por wishlist
-    LUIZALABS_WISHLIST_MAX_LIMIT = 20
+    WISHLIST_MAX_LIMIT = 20
 ```
  
 

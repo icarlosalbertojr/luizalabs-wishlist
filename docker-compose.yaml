@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   app:
-    container_name: luizalabs-wishlist
+    container_name: challenge-wishlist
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,9 +10,9 @@ services:
     depends_on:
       - mongodb
     environment:
-      - LUIZALABS_WISHLIST_ENVIRONMENT=prod
-      - LUIZALABS_WISHLIST_MONGODB_URL=mongodb://mongodb:27017/wishlist
-      - LUIZALABS_WISHLIST_MAX_LIMIT=20
+      - WISHLIST_ENVIRONMENT=prod
+      - WISHLIST_MONGODB_URL=mongodb://mongodb:27017/wishlist
+      - WISHLIST_MAX_LIMIT=20
   mongodb:
     image: mongo
     container_name: mongodb-wishlist

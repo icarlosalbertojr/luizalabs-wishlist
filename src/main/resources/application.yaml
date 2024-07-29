@@ -3,15 +3,15 @@ server:
 
 spring:
   profiles:
-    active: ${LUIZALABS_WISHLIST_ENVIRONMENT:local}
+    active: ${WISHLIST_ENVIRONMENT:local}
   application:
     name: wishlist
   data:
     mongodb:
-      uri: ${LUIZALABS_WISHLIST_MONGODB_URL}
+      uri: ${WISHLIST_MONGODB_URL}
       auto-index-creation: true
 service:
   params:
     wishlist:
-      maxLimit: ${LUIZALABS_WISHLIST_MAX_LIMIT:20}
+      maxLimit: ${WISHLIST_MAX_LIMIT:20}
 

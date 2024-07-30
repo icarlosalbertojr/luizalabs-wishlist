@@ -34,21 +34,24 @@ todos os produtos que ele selecionou em uma única tela.
 
 ## Executar projeto
 
-### Docker compose:
-```docker compose up -d ```
-
 ### Environment variables:
 ```dockerfile
     # Define o ambiente em que o projeto está sendo executado
     WISHLIST_ENVIRONMENT = prod | local
     
-    #Define a URL de conxexão com o MongoDB
+    # Define a URL de conxexão com o MongoDB
     WISHLIST_MONGODB_URL = mongodb://mongodb:27017/wishlist
     
     # Define o tamanho máximo de produtos por wishlist
     WISHLIST_MAX_LIMIT = 20
 ```
- 
+
+### Docker compose:
+```docker compose up -d```
+
+### Acesso Swagger UI:
+
+[Link](http://localhost:8081/swagger-ui/index.html#/)
 
 
 ## Executar testes

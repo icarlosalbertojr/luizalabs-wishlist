@@ -49,7 +49,7 @@ dependencies {
 	testImplementation 'org.instancio:instancio-junit:5.0.0'
 	testImplementation 'io.rest-assured:rest-assured:5.5.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.6.2'
+	testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo.spring30x:4.9.2'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 

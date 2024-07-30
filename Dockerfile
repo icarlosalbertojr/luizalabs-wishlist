@@ -1,11 +1,11 @@
 ### Build stage
-FROM gradle:8.0-jdk17-alpine AS build
+FROM gradle:8-jdk17-focal AS build
 
 WORKDIR /app
 
 COPY . .
 
-RUN gradle build --no-daemon
+RUN gradle clean build  --no-daemon
 
 ### Release stage
 FROM openjdk:17-alpine AS release
